@@ -1,5 +1,7 @@
 package com.hylicmerit.util;
 
+import java.util.List;
+
 public final class Constants {
   private Constants() {}
 
@@ -11,4 +13,6 @@ public final class Constants {
   public static final String DECRYPT_DIR_OP = "decryptDir";
   public static final String ENCRYPTED_DIR_SUFFIX = ".encrypted";
   public static final String DECRYPTED_DIR_SUFFIX = ".decrypted";
+  public static final List<String> VALID_OPERATIONS =
+      List.of(ENCRYPT_OP, DECRYPT_OP, ENCRYPT_DIR_OP, DECRYPT_DIR_OP);
 }

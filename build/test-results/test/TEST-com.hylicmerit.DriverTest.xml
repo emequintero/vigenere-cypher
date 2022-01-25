@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hylicmerit.DriverTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:40:15" hostname="MQUINTERO-LAP" time="0.026">
+  <properties/>
+  <testcase name="testInvalidOperation()" classname="com.hylicmerit.DriverTest" time="0.024"/>
+  <testcase name="testInvalidNumArgs()" classname="com.hylicmerit.DriverTest" time="0.001"/>
+  <system-out><![CDATA[Please provide one of the following operations: [encrypt, decrypt, encryptDir, decryptDir]
+Please provide the required arguments: 'operation' 'key' 'target'
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,2 @@
+\Please provide one of the following operations: [encrypt, decrypt, encryptDir, decryptDir]
+CPlease provide the required arguments: 'operation' 'key' 'target'

@@ -8,38 +8,36 @@ import java.io.IOException;
 
 public class Driver {
   public static void main(String[] args) throws IOException {
-    System.out.println("Driver running...");
+    run(args);
+  }
 
-    System.out.println(Cypher.processChunk(Constants.ENCRYPT_OP, "encrypt", "top secret"));
-    System.out.println(Cypher.processChunk(Constants.DECRYPT_OP, "encrypt", "?3\" B4\"C[8"));
+  public static String run(String[] args) throws IOException {
+    String result = "";
+    if (args.length != 3) {
+      System.out.println("Please provide the required arguments: 'operation' 'key' 'target'");
+    } else {
+      String operation = args[0];
+      String key = args[1];
+      String target = args[2];
 
-    System.out.println(
-        Cypher.processChunk(Constants.ENCRYPT_OP, "encrypt", "lorem ipsum lorem ipsum?! \toh???"));
-    System.out.println(
-        Cypher.processChunk(Constants.DECRYPT_OP, "encrypt", "'3.<C ?A>9; 4E8?: <\"BK3sA F:0xos"));
-
-    DirectoryHelper.processDirectoryBFS(
-        Constants.ENCRYPT_DIR_OP,
-        "encrypt",
-        "C:/Users/mquintero/cyprography/src/main/resources/test",
-        null);
-
-    DirectoryHelper.processDirectoryBFS(
-            Constants.DECRYPT_DIR_OP,
-            "encrypt",
-            "C:/Users/mquintero/cyprography/src/main/resources/test",
-            null);
-
-    DirectoryHelper.processDirectoryDFS(
-            Constants.ENCRYPT_DIR_OP,
-            "encrypt",
-            "C:/Users/mquintero/cyprography/src/main/resources/test",
-            null);
-
-    DirectoryHelper.processDirectoryDFS(
-            Constants.DECRYPT_DIR_OP,
-            "encrypt",
-            "C:/Users/mquintero/cyprography/src/main/resources/test",
-            null);
+      if (!Constants.VALID_OPERATIONS.contains(operation)) {
+        System.out.println(
+            "Please provide one of the following operations: " + Constants.VALID_OPERATIONS);
+      } else {
+        switch (operation) {
+          case Constants.ENCRYPT_OP:
+          case Constants.DECRYPT_OP:
+            result = Cypher.processChunk(operation, key, target);
+            break;
+          case Constants.ENCRYPT_DIR_OP:
+          case Constants.DECRYPT_DIR_OP:
+            DirectoryHelper.processDirectoryBFS(operation, key, target, null);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    return result;
   }
 }
